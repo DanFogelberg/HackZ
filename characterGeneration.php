@@ -1,0 +1,1 @@
+<?php //To do: Make character generation its own page to reduce clutter
