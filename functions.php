@@ -5,10 +5,7 @@
 //Roll a new character and add to array. For creating enemies, player character etc etc
 function generate_character(string $name, int $strength, int $agility )
 {
-    global $characters;
-    $characters[$name] = ["strength" => $strength, "agility" => $agility];
-
-
+    $_SESSION['characters'][$name] = ["strength" => $strength, "agility" => $agility];
 }
 
 

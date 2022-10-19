@@ -3,6 +3,7 @@
 
 
 //Array holds all characters. More are added as they appear. 
-$characters = ["ExampleName" => ["strength" => 10, "agility" => 3]];
+
+$_SESSION['characters']["ExampleName"] = ["strength" => 130, "agility" => 3];
 
 

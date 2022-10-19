@@ -2,6 +2,8 @@
 
 declare(strict_types = 1);
 
+session_start();
+
 require "style.css";
 require "variables.php";
 require "functions.php";
@@ -9,19 +11,35 @@ require "functions.php";
 print "Hello Hackz0r";
 
 
-generate_character("Player", rand(1,10), rand(1,10));
 
-foreach($characters as $key => $character)
+
+
+generate_character("My Character", 15, 167);
+print_r ($_SESSION['characters']);
+
+
+
+/*generate_character("Player", rand(1,10), rand(1,10));
+
+foreach($_SESSION['characters'] as $key => $character)
 {
     echo "$key has $character[strength] strength!";
 
 
 }
 
+*/
 
 
 
-/* Program flow:
+/* 
+
+To do:
+
+1. Character generation button.
+
+
+Program flow:
 
 1. Generate player character
 2. Render world with options
