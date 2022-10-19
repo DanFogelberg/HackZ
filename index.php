@@ -2,6 +2,7 @@
 
 declare(strict_types = 1);
 
+require "style.css";
 require "variables.php";
 require "functions.php";
 
