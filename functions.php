@@ -12,7 +12,7 @@ function generate_character(string $name, int $strength, int $agility, int $heal
 //Renders header with hit points, stats, etc etc
 function render_header(){
 
-}
+} 
 
 
 //Returns true if dead
@@ -22,8 +22,26 @@ function take_damage(int $damage, array &$target):bool{
     {
         return true;
     }else return false;
+}
+
+
+//Characters damage eachother. Returns true if someone died.
+function fight(array &$fighter1, array &$fighter2):bool{
+    
+    $dead = take_damage($fighter2["strength"], $fighter1);
+    if($dead == true)
+    {
+        return true;
+    }
 
 
 
+    $dead = take_damage($fighter1["strength"], $fighter2);
+    if($dead == true)
+    {
+        return true;
+    }
 
+
+    return false;
 }

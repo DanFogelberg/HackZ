@@ -15,21 +15,6 @@ print "Hello Hackz0r";
 
 //HTML button logic for rolling your character
 
-echo "<br><br><br>";
-
-if(array_key_exists('roll-stats', $_POST)) {
-    echo "You see me rolling!";
-    generate_character("DinKaraktärsNamnHär", rand(3,18), rand(3,18), 100);
-
-
-}
-else if(array_key_exists('fight', $_POST)) {
-    echo "It's a fight!";
-    
-    take_damage(10, $_SESSION['characters']["DinKaraktärsNamnHär"]);
-
-    print_r($_SESSION['characters']["DinKaraktärsNamnHär"]);
-}
 
 ?>
 <!-- Interactive buttons -->
@@ -48,6 +33,21 @@ else if(array_key_exists('fight', $_POST)) {
 
 
 <?php 
+echo "<br><br><br>";
+
+if(array_key_exists('roll-stats', $_POST)) {
+    echo "You see me rolling!";
+    generate_character("DinKaraktärsNamnHär", rand(3,18), rand(3,18), 100);
+
+
+}
+else if(array_key_exists('fight', $_POST)) {
+    echo "It's a fight!";
+    
+    fight($_SESSION['characters']["DinKaraktärsNamnHär"], $_SESSION['characters']["DinKaraktärsNamnHär"] );
+
+    print_r($_SESSION['characters']["DinKaraktärsNamnHär"]);
+}
 
 
 print_r ($_SESSION['characters']);
