@@ -1,56 +1,43 @@
 <?php
+//This is a basic rpg game with very basic combat. 
 
-declare(strict_types = 1);
 
+
+
+declare(strict_types=1);
 session_start();
-
+// session_destroy();
 require "style.css";
 require "variables.php";
 require "functions.php";
+require "resolvePost.php"; //All function calls for game logic are called here.
 
-print "Hello Hackz0r";
+//Each require is a different screen in the game. They mostly print a bit of text to the player and give them buttons to press. These buttons correspond to logic in "resolvePost.php".
+if (!playerAlive()) { //If no player character exists: Roll a new one
 
+    require "characterGeneration.php";
+} else { //Else run main game loop
 
-
-
-//HTML button logic for rolling your character
-
+    require "gameMenu.php";
+}
 
 ?>
-<!-- Interactive buttons -->
-
-<br><br><br>
-<form method="post">
-    <input type="submit" name="roll-stats"
-        class="button" value="Roll stats" />
-          
-    <input type="submit" name="fight"
-        class="button" value="Fight!" />
-</form>
 
 
 
 
 
-<?php 
-echo "<br><br><br>";
-
-if(array_key_exists('roll-stats', $_POST)) {
-    echo "You see me rolling!";
-    generate_character("DinKaraktärsNamnHär", rand(3,18), rand(3,18), 100);
 
 
-}
-else if(array_key_exists('fight', $_POST)) {
-    echo "It's a fight!";
-    
-    fight($_SESSION['characters']["DinKaraktärsNamnHär"], $_SESSION['characters']["DinKaraktärsNamnHär"] );
-
-    print_r($_SESSION['characters']["DinKaraktärsNamnHär"]);
-}
 
 
-print_r ($_SESSION['characters']);
+
+
+<?php
+
+
+
+//print_r($characters);
 
 
 

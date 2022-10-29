@@ -1,9 +1,10 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 
 //Array holds all characters. More are added as they appear. 
+if (isset($_SESSION['characters'])) $characters = $_SESSION['characters'];
 
-$_SESSION['characters']["ExampleName"] = ["strength" => 130, "agility" => 3, "health" => 10];
-
-
+//Key for player character
+if (isset($_SESSION['playerCharacter'])) $playerCharacter = $_SESSION['playerCharacter'];
