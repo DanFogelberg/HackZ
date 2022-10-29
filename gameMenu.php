@@ -1,4 +1,4 @@
-<?php //To do: Generation and handling of fights.
+<?php //To do: Add enemy generation and info. Add different buttons for fighting and finding enemies.
 
 
 
@@ -7,6 +7,7 @@
 ?>
 
 You are out on a dangerous adventure. Your name is <?= $playerCharacter ?> and you have <?= $characters[$playerCharacter]["health"] ?> health!
+
 
 
 
