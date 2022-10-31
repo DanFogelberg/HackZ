@@ -1,5 +1,7 @@
 <?php
-//This is a basic rpg game with very basic combat. 
+// This is a very basic rpg game with very basic combat. The player makes choices by pressing buttons which reload the page. "resolvePost.php" resolves logic based on the most recent button press.
+
+// Then this file calculates which game screen is appropriate and will require() a corresponding .php file. For example: combat.php or adventure.php
 
 
 
@@ -8,30 +10,23 @@ declare(strict_types=1);
 session_start();
 // session_destroy();
 require "style.css";
-require "variables.php";
-require "functions.php";
-require "resolvePost.php"; //All function calls for game logic are called here.
+require "php/variables.php";
+require "php/functions.php";
+require "php/resolvePost.php"; //All function calls for game logic are called here.
 
-//Each require is a different screen in the game. They mostly print a bit of text to the player and give them buttons to press. These buttons correspond to logic in "resolvePost.php".
+//Different game screens. Prints text and buttons.
 if (!playerAlive()) { //If no player character exists: Roll a new one
 
-    require "characterGeneration.php";
-} else { //Else run main game loop
+    require "php/characterGeneration.php";
+} else if ($inCombat) {
 
-    require "gameMenu.php";
+    require "php/combat.php";
+} else {
+
+    require "php/adventure.php";
 }
 
 ?>
-
-
-
-
-
-
-
-
-
-
 
 <?php
 
@@ -56,7 +51,7 @@ foreach($_SESSION['characters'] as $key => $character)
 
 
 
-/* 
+/*
 
 To do:
 

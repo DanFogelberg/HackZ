@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_variables=1);
+declare(strict_types=1);
 ?>
 
 
@@ -12,3 +12,12 @@ You are in a dangerous battle! Scary stuff.
 <form method="post">
     <input type="submit" name="fight" class="button" value="Fight!" />
 </form>
+
+
+
+
+<?php foreach ($characters as $name => $character) {
+    if ($character["type"] === "enemy") { ?> You are fighting <?= $name ?>. His health is <?= $character["health"] ?> and his strength is <?= $character["strength"] ?>
+
+<?php }
+}

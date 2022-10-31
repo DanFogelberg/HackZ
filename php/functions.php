@@ -7,7 +7,7 @@ declare(strict_types=1);
 function generate_character(string $name, int $strength, int $agility, int $health, $type = "enemy")
 {
     global $characters;
-    $characters[$name] = ["strength" => $strength, "agility" => $agility, "health" => $health];
+    $characters[$name] = ["strength" => $strength, "agility" => $agility, "health" => $health, "type" => $type];
     $_SESSION["characters"] = $characters;
 
     if ($type === "playerCharacter") {
@@ -61,6 +61,15 @@ function playerAlive(): bool
     if (isset($_SESSION["playerCharacter"]) && isset($_SESSION["characters"][$_SESSION["playerCharacter"]]["health"])) {
 
         if ($_SESSION["characters"][$_SESSION["playerCharacter"]]["health"] > 0) return true;
+    }
+    return false;
+}
+
+function isDead(array $target): bool
+{
+
+    if ($target["health"] <= 0) {;
+        return true;
     }
     return false;
 }
