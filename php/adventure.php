@@ -1,14 +1,16 @@
 <?php //To do: Add enemy generation and info. Add different buttons for fighting and finding enemies.
+declare(strict_types=0);
 
 
-
-
+if (isset($message)) {
+    echo $message;
+}
 
 ?>
 <!-- Placeholder text -->
 
 
-You are out on a dangerous adventure. Your name is <?= $playerCharacter ?> and you have <?= $characters[$playerCharacter]["health"] ?> health!
+<!-- You are out on a dangerous adventure. Your name is <?= $playerCharacter ?> and you have <?= $characters[$playerCharacter]["health"] ?> health! -->
 
 
 

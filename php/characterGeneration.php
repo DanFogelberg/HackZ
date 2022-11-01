@@ -1,4 +1,5 @@
 <?php //To do: Make character generation its own page to reduce clutter
+declare(strict_types=0);
 ?>
 
 <form method="post">

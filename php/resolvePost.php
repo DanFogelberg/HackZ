@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 //Resolves all logic from button presses etc
 
 
@@ -6,8 +8,8 @@
 //CHARACTER GENERATION
 //Generate random player character
 if (array_key_exists('roll-stats', $_POST) && !empty($_POST["name"])) {
-    echo "You see me rolling!";
     generate_character($_POST["name"], rand(3, 18), rand(3, 18), 15, "playerCharacter");
+    $message = "This is the end times dear child. You are the great hero $_POST[name] and it is up to you to save the world from the evil WU22 overlord Hasse.";
 }
 
 
@@ -15,7 +17,7 @@ if (array_key_exists('roll-stats', $_POST) && !empty($_POST["name"])) {
 //Generate an adventure scene
 if (array_key_exists('adventure', $_POST)) {
     $adventure = createAdventure();
-    echo $adventure["message"];
+    $message = $adventure["message"];
     if ($adventure["enemy"] !== false) { //If the adventure contains an enemy, enter combat
         generate_character("Guran", 10, 10, 10);
         $target = "Guran"; //Target of fight button
@@ -30,12 +32,12 @@ if (array_key_exists('adventure', $_POST)) {
 //COMBAT
 //Combat happens
 if (array_key_exists('fight', $_POST)) {
-    echo "It's a fight!";
-
     fight($characters[$playerCharacter], $characters[$target]);
     $_SESSION["characters"] = $characters;
+    $message  = "You attack the horrible $target. You deal " . $characters[$playerCharacter]["strength"] . " damage. Fighting ferociously he strikes you back for " . $characters[$target]["strength"] . " damage. He has " . $characters[$target]["health"] . " health left.";
     //If enemy dies, combat is over.
     if (isDead($characters[$target])) {
+        $message .= "<br> This means you have managed to murder the poor $target. Well done!";
         unset($characters[$target]);
         $target = false;
         $inCombat = false;
@@ -47,7 +49,7 @@ if (array_key_exists('fight', $_POST)) {
 
     if (!playerAlive()) { ?>
         <h1>Tragedy has struck!</h1>
-        <p>The great hero <?= $playerCharacter ?> is no longer. I am so sorry.</p>
+        <p>The great hero <?= $playerCharacter ?> is no more. I am so sorry.</p>
 
 <?php
         unset($characters);

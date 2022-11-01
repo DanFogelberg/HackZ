@@ -16,13 +16,12 @@ require "php/resolvePost.php"; //All function calls for game logic are called he
 
 //Different game screens. Prints text and buttons.
 if (!playerAlive()) { //If no player character exists: Roll a new one
-
     require "php/characterGeneration.php";
 } else if ($inCombat) {
-
+    require "php/header.php";
     require "php/combat.php";
 } else {
-
+    require "php/header.php";
     require "php/adventure.php";
 }
 

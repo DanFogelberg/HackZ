@@ -1,13 +1,12 @@
 <?php
 
 declare(strict_types=1);
+
+if (isset($message)) {
+    echo $message;
+}
+
 ?>
-
-
-You are in a dangerous battle! Scary stuff.
-
-<!-- Add enemy stats and situation. Possibly different options -->
-
 
 <form method="post">
     <input type="submit" name="fight" class="button" value="Fight!" />
