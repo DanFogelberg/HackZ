@@ -10,7 +10,7 @@ declare(strict_types=1);
 if (array_key_exists('roll-stats', $_POST) && !empty($_POST["name"])) {
     $name = filter_var($_POST["name"]); //A better filter should be used
     generate_character($name, rand(3, 18), 1500, "playerCharacter");
-    $message = "This is the end times dear child. You are the great hero $name and it is up to you to save the world from the evil WU22 overlord Hasse.";
+    $message = "This is the end times. You are the great hero $name and it is up to you to save the world from the evil Mr. H.";
 }
 
 
@@ -39,20 +39,18 @@ if (array_key_exists('fight', $_POST)) {
 
     checkDeaths();
 }
-
-
 //Combat happens until someone dies
 if (array_key_exists('quickFight', $_POST)) {
     $message = "You fight to the death! ";
     while ($characters[$playerCharacter]["health"] > 0 && $characters[$target]["health"] > 0) {
         fight($characters[$playerCharacter], $characters[$target]);
         $_SESSION["characters"] = $characters;
-        $message  .= "You attack the horrible $target. You deal " . $characters[$playerCharacter]["strength"] . " damage. Fighting ferociously he strikes you back for " . $characters[$target]["strength"] . " damage.";
+        $message  .= "You attack the horrible $target. You deal " . $characters[$playerCharacter]["strength"] . " damage. Fighting ferociously he strikes you back for " . $characters[$target]["strength"] . " damage. /n";
     }
 
     checkDeaths();
 }
-
+//Escape from combat
 if (array_key_exists('run', $_POST)) {
     leaveCombat();
     $message = "You run away! You live to fight another day, as a true hero!";
