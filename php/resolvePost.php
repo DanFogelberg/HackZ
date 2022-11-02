@@ -1,14 +1,14 @@
 <?php
 
 declare(strict_types=1);
-//Resolves all logic from button presses etc
+//Resolves all logic from button presses
 
 
 
 //CHARACTER GENERATION
 //Generate random player character
 if (array_key_exists('roll-stats', $_POST) && !empty($_POST["name"])) {
-    generate_character($_POST["name"], rand(3, 18), rand(3, 18), 15, "playerCharacter");
+    generate_character($_POST["name"], rand(3, 18), 15, "playerCharacter");
     $message = "This is the end times dear child. You are the great hero $_POST[name] and it is up to you to save the world from the evil WU22 overlord Hasse.";
 }
 
@@ -19,7 +19,7 @@ if (array_key_exists('adventure', $_POST)) {
     $adventure = createAdventure();
     $message = $adventure["message"];
     if ($adventure["enemy"] !== false) { //If the adventure contains an enemy, enter combat
-        generate_character("Guran", 10, 10, 10);
+        generate_character("Guran", 10, 10);
         $target = "Guran"; //Target of fight button
         $_SESSION["target"] = $target;
         $inCombat = true;

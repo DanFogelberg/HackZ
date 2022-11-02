@@ -1,7 +1,7 @@
 <?php
 
 declare(strict_types=1);
-
+//Combat page. Shows a message about the situation and prints a button for fighting
 showMessage($message);
 
 ?>

@@ -29,27 +29,6 @@ if (!playerAlive()) { //If no player character exists: Roll a new one
 
 <?php
 
-
-
-//print_r($characters);
-
-
-
-
-
-/*generate_character("Player", rand(1,10), rand(1,10));
-
-foreach($_SESSION['characters'] as $key => $character)
-{
-    echo "$key has $character[strength] strength!";
-
-
-}
-
-*/
-
-
-
 /*
 
 To do:

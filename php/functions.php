@@ -3,11 +3,11 @@
 declare(strict_types=1);
 
 
-//Roll a new character and add to array. For creating enemies, player character etc etc
-function generate_character(string $name, int $strength, int $agility, int $health, $type = "enemy")
+//Roll a new character and add to array. For creating both player character and enemies
+function generate_character(string $name, int $strength, int $health, $type = "enemy")
 {
     global $characters;
-    $characters[$name] = ["strength" => $strength, "agility" => $agility, "health" => $health, "type" => $type];
+    $characters[$name] = ["strength" => $strength, "health" => $health, "type" => $type];
     $_SESSION["characters"] = $characters;
 
     if ($type === "playerCharacter") {
@@ -16,12 +16,6 @@ function generate_character(string $name, int $strength, int $agility, int $heal
         global $playerCharacter;
         $playerCharacter = $_SESSION["playerCharacter"];
     }
-}
-
-
-//Renders header with hit points, stats, etc etc
-function render_header()
-{
 }
 
 
@@ -45,6 +39,7 @@ function fight(array &$fighter1, array &$fighter2)
 }
 
 
+
 function playerAlive(): bool
 {
     if (isset($_SESSION["playerCharacter"]) && isset($_SESSION["characters"][$_SESSION["playerCharacter"]]["health"])) {
@@ -54,15 +49,15 @@ function playerAlive(): bool
     return false;
 }
 
+//For enemies
 function isDead(array $target): bool
 {
 
-    if ($target["health"] <= 0) {;
+    if ($target["health"] <= 0) {
         return true;
     }
     return false;
 }
-
 
 function createAdventure(): array
 {
@@ -72,7 +67,7 @@ function createAdventure(): array
 }
 
 
-//Shows message based on what has happened based on last button press
+//Shows message about what has happened, based on last button press
 function showMessage($message)
 {
     if (isset($message)) { ?>

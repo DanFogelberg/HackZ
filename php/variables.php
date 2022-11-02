@@ -12,7 +12,6 @@ $adventures = [
 //Array holds all characters. More are added as they appear.
 if (isset($_SESSION['characters'])) {
     $characters = $_SESSION['characters'];
-    print_r($characters);
 }
 
 
