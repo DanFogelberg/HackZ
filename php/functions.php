@@ -72,7 +72,41 @@ function showMessage($message)
 {
     if (isset($message)) { ?>
         <p><?= $message ?></p>
-<?php
+    <?php
 
+    }
+}
+
+
+//Checks if anyone has died in the combat, adds approriate messages and removes dead characters. Resets character array on player death.
+function checkDeaths()
+{
+    global $inCombat;
+    global $target;
+    global $characters;
+    global $message;
+    global $playerCharacter;
+    if (isDead($characters[$target])) {
+        $message .= "<br> This means you have managed to murder the poor $target. Well done!";
+        unset($characters[$target]);
+        $target = false;
+        $inCombat = false;
+        $_SESSION["inCombat"] = $inCombat;
+    }
+
+
+    //If player is dead, remove all characters, print death message. Game will return to character creation.
+    if (!playerAlive()) { ?>
+        <h1>Tragedy has struck!</h1>
+        <p>The great hero <?= $playerCharacter ?> is no more. I am so sorry.</p>
+
+<?php
+        unset($characters);
+        unset($_SESSION["characters"]);
+        unset($playerCharacter);
+        unset($_SESSION["playerCharacter"]);
+        $target = false;
+        $inCombat = false;
+        $_SESSION["inCombat"] = $inCombat;
     }
 }

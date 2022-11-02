@@ -8,6 +8,7 @@ showMessage($message);
 
 <form method="post">
     <input type="submit" name="fight" class="button" value="Fight!" />
+    <input type="submit" name="quickFight" class="button" value="Quick Fight!" />
 </form>
 
 
