@@ -9,11 +9,32 @@
 declare(strict_types=1);
 session_start();
 // session_destroy();
-require "style.css";
 require "php/variables.php";
 require "php/functions.php";
 require "php/resolvePost.php"; //All function calls for game logic are called here.
 
+
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+
+<?php
 //Different game screens. Prints text and buttons.
 if (!playerAlive()) { //If no player character exists: Roll a new one
     require "php/characterGeneration.php";
@@ -24,6 +45,7 @@ if (!playerAlive()) { //If no player character exists: Roll a new one
     require "php/header.php";
     require "php/adventure.php";
 }
+
 
 ?>
 

@@ -70,11 +70,11 @@ function createAdventure(): array
 //Shows message about what has happened, based on last button press
 function showMessage($message)
 {
-    if (isset($message)) { ?>
-        <p><?= $message ?></p>
+?>
+    <p class="message"><?= $message ?></p>
     <?php
 
-    }
+
 }
 
 
@@ -88,10 +88,7 @@ function checkDeaths()
     global $playerCharacter;
     if (isDead($characters[$target])) {
         $message .= "<br> This means you have managed to murder the poor $target. Well done!";
-        unset($characters[$target]);
-        $target = false;
-        $inCombat = false;
-        $_SESSION["inCombat"] = $inCombat;
+        leaveCombat();
     }
 
 
@@ -109,4 +106,18 @@ function checkDeaths()
         $inCombat = false;
         $_SESSION["inCombat"] = $inCombat;
     }
+}
+
+
+function leaveCombat()
+{
+    global $target;
+    global $inCombat;
+    global $characters;
+    unset($characters[$target]);
+    $_SESSION["characters"] = $characters;
+    $target = false;
+    $_SESSION["target"] = $target;
+    $inCombat = false;
+    $_SESSION["inCombat"] = $inCombat;
 }

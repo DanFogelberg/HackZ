@@ -52,3 +52,8 @@ if (array_key_exists('quickFight', $_POST)) {
 
     checkDeaths();
 }
+
+if (array_key_exists('run', $_POST)) {
+    leaveCombat();
+    $message = "You run away! You live to fight another day, as a true hero!";
+}
