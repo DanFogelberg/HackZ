@@ -34,7 +34,7 @@ if (array_key_exists('adventure', $_POST)) {
 if (array_key_exists('fight', $_POST)) {
     fight($characters[$playerCharacter], $characters[$target]);
     $_SESSION["characters"] = $characters;
-    $message  = "You attack the horrible $target. You deal " . $characters[$playerCharacter]["strength"] . " damage. Fighting ferociously he strikes you back for " . $characters[$target]["strength"] . " damage. He has " . $characters[$target]["health"] . " health left.";
+    $message  = "You attack the horrible $target. You deal " . $characters[$playerCharacter]["strength"] . " damage. Fighting ferociously he strikes you back for " . $characters[$target]["strength"] . " damage.";
     //If enemy dies, combat is over.
     if (isDead($characters[$target])) {
         $message .= "<br> This means you have managed to murder the poor $target. Well done!";

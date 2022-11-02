@@ -1,10 +1,7 @@
 <?php //To do: Add enemy generation and info. Add different buttons for fighting and finding enemies.
 declare(strict_types=0);
 
-
-if (isset($message)) {
-    echo $message;
-}
+showMessage($message);
 
 ?>
 <!-- Placeholder text -->

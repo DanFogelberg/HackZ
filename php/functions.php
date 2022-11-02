@@ -25,34 +25,23 @@ function render_header()
 }
 
 
-//Returns true if dead
-function take_damage(int $damage, array &$target): bool
+//Reduce target health
+function take_damage(int $damage, array &$target)
 {
     $target["health"] -= $damage;
-    if ($target["health"] <= 0) {
-        return true;
-    } else return false;
 }
 
 
-//Characters damage eachother. Returns true if someone died.
-function fight(array &$fighter1, array &$fighter2): bool
+//Characters damage each other
+function fight(array &$fighter1, array &$fighter2)
 {
 
-    $dead = take_damage($fighter2["strength"], $fighter1);
-    if ($dead == true) {
-        return true;
-    }
+    take_damage($fighter2["strength"], $fighter1);
 
 
 
-    $dead = take_damage($fighter1["strength"], $fighter2);
-    if ($dead == true) {
-        return true;
-    }
 
-
-    return false;
+    take_damage($fighter1["strength"], $fighter2);
 }
 
 
@@ -80,4 +69,15 @@ function createAdventure(): array
     global $adventures;
     $key = array_rand($adventures);
     return $adventures[$key];
+}
+
+
+//Shows message based on what has happened based on last button press
+function showMessage($message)
+{
+    if (isset($message)) { ?>
+        <p><?= $message ?></p>
+<?php
+
+    }
 }
