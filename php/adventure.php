@@ -5,13 +5,6 @@ declare(strict_types=0);
 if (isset($message)) showMessage($message);
 
 ?>
-<!-- Placeholder text -->
-
-
-<!-- You are out on a dangerous adventure. Your name is <?= $playerCharacter ?> and you have <?= $characters[$playerCharacter]["health"] ?> health! -->
-
-
-
 
 
 <form method="post">

@@ -45,7 +45,7 @@ if (array_key_exists('quickFight', $_POST)) {
     while ($characters[$playerCharacter]["health"] > 0 && $characters[$target]["health"] > 0) {
         fight($characters[$playerCharacter], $characters[$target]);
         $_SESSION["characters"] = $characters;
-        $message  .= "You attack the horrible $target. You deal " . $characters[$playerCharacter]["strength"] . " damage. Fighting ferociously he strikes you back for " . $characters[$target]["strength"] . " damage. /n";
+        $message  .= "You attack the horrible $target. You deal " . $characters[$playerCharacter]["strength"] . " damage. Fighting ferociously he strikes you back for " . $characters[$target]["strength"] . " damage. <br>";
     }
 
     checkDeaths();

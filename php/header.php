@@ -1,11 +1,12 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
 
-declare(strict_types=1);
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-if (isset($playerCharacter)) { ?>
-    <h2>Name: <?= $playerCharacter ?> </h2>
-    <h3>Health: <?= $characters[$playerCharacter]["health"] ?> Strength: <?= $characters[$playerCharacter]["strength"] ?></h3>
-
-
-
-<?php }
+<body>
